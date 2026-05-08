@@ -1,0 +1,30 @@
+# eclipse
+bin
+*.launch
+.eclipse
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+.DS_Store
+eclipse
+run
+runs
+runserver
+logs
+
+common/src/generated/resources/.cache
+.minecraft

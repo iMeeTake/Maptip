@@ -1,0 +1,6 @@
+dependencies {
+    modImplementation("net.blay09.mods:balm-fabric:${balm_version}") {
+        exclude(group: "net.blay09.mods", module: "shared-bridge")
+        changing = balm_version.contains("SNAPSHOT")
+    }
+}
