@@ -21,6 +21,9 @@
     ],
     "client": [
       "${group}.${mod_id}.fabric.client.Fabric${mod_main}Client"
+    ],
+    "modmenu": [
+      "${group}.${mod_id}.fabric.client.Fabric${mod_main}ModMenu"
     ]
   },
   "mixins": [

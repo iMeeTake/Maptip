@@ -9,6 +9,7 @@ neoForge = "21.11.37-beta"
 # See https://fabricmc.net/develop/
 fabricApi = "0.141.2+1.21.11"
 fabricLoader = "0.18.4"
+modMenu = "17.0.0-beta.1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -23,6 +24,7 @@ neoForm = { module = "net.neoforged:neoform", version.ref = "neoForm" }
 neoForge = { module = "net.neoforged:neoforge", version.ref = "neoForge" }
 fabricApi = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabricApi" }
 fabricLoader = { module = "net.fabricmc:fabric-loader", version.ref = "fabricLoader" }
+modMenu = { module = "com.terraformersmc:modmenu", version.ref = "modMenu" }
 
 mixin = { module = "org.spongepowered:mixin", version = "0.8.7" }
 

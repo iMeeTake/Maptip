@@ -1,3 +1,9 @@
 {
-  "modmenu.descriptionTranslation.maptip": "Afficher les cartes dans les info-bulles."
+  "modmenu.descriptionTranslation.maptip": "Afficher les cartes dans les info-bulles.",
+  "maptip.configuration.client.title": "Paramètres de Maptip",
+  "maptip.configuration.preview.title": "Aperçu de l'infobulle",
+  "maptip.configuration.previewSize": "Taille de l'aperçu",
+  "maptip.configuration.previewSize.value": "Taille de l'aperçu : %s px",
+  "maptip.configuration.reset": "Réinitialiser",
+  "maptip.configuration.previewSize.tooltip": "Taille de l'aperçu de la carte dans les infobulles d'objet, en pixels."
 }

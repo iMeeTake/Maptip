@@ -2,4 +2,6 @@ dependencies {
     modImplementation(libs.balmFabric) {
         changing = libs.versions.balm.get().contains("SNAPSHOT")
     }
+    modCompileOnly libs.modMenu
+    modRuntimeOnly libs.modMenu
 }

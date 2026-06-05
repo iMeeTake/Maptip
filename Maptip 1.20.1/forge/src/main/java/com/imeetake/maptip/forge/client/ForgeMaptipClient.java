@@ -3,9 +3,11 @@ package com.imeetake.maptip.forge.client;
 import com.mojang.datafixers.util.Either;
 import com.imeetake.maptip.Maptip;
 import com.imeetake.maptip.client.MaptipClient;
+import com.imeetake.maptip.client.config.MaptipConfigScreen;
 import com.imeetake.maptip.tooltip.MaptipTooltipData;
 import net.blay09.mods.balm.api.EmptyLoadContext;
 import net.blay09.mods.balm.api.client.BalmClient;
+import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,6 +23,8 @@ import java.util.List;
 public class ForgeMaptipClient {
     public static void initialize(FMLJavaModLoadingContext context) {
         BalmClient.initializeMod(Maptip.MOD_ID, EmptyLoadContext.INSTANCE, MaptipClient::initialize);
+        context.getContainer().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
+            () -> new ConfigScreenHandler.ConfigScreenFactory(MaptipConfigScreen::new));
         context.getModEventBus().addListener(ForgeMaptipClient::registerTooltipComponents);
         MinecraftForge.EVENT_BUS.addListener(ForgeMaptipClient::gatherTooltipComponents);
     }

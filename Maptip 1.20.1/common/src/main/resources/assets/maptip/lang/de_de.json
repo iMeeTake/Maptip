@@ -1,3 +1,9 @@
 {
-  "modmenu.descriptionTranslation.maptip": "Zeigen Sie Karten in Tooltips an."
+  "modmenu.descriptionTranslation.maptip": "Zeigen Sie Karten in Tooltips an.",
+  "maptip.configuration.client.title": "Maptip-Einstellungen",
+  "maptip.configuration.preview.title": "Tooltip-Vorschau",
+  "maptip.configuration.previewSize": "Vorschaugröße",
+  "maptip.configuration.previewSize.value": "Vorschaugröße: %s px",
+  "maptip.configuration.reset": "Zurücksetzen",
+  "maptip.configuration.previewSize.tooltip": "Größe der Kartenvorschau in Gegenstands-Tooltips, in Pixeln."
 }
