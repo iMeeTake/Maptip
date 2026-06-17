@@ -1,0 +1,9 @@
+{
+  "modmenu.descriptionTranslation.maptip": "View maps in tooltips.",
+  "maptip.configuration.client.title": "Maptip Settings",
+  "maptip.configuration.preview.title": "Tooltip Preview",
+  "maptip.configuration.previewSize": "Preview Size",
+  "maptip.configuration.previewSize.value": "Preview Size: %s px",
+  "maptip.configuration.reset": "Reset",
+  "maptip.configuration.previewSize.tooltip": "Size of the map preview in item tooltips, in pixels."
+}

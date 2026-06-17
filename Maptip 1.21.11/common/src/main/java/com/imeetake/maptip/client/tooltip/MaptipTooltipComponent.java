@@ -15,6 +15,7 @@ import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
 public final class MaptipTooltipComponent implements ClientTooltipComponent {
     private static final int BOTTOM_PADDING = 6;
+    private static final MapRenderState RENDER_STATE = new MapRenderState();
 
     private final ItemStack stack;
 
@@ -53,8 +54,7 @@ public final class MaptipTooltipComponent implements ClientTooltipComponent {
         }
 
         MapRenderer renderer = client.getMapRenderer();
-        MapRenderState renderState = new MapRenderState();
-        renderer.extractRenderState(mapId, mapData, renderState);
-        MaptipPreviewRenderer.renderMap(guiGraphics, x, y, sizePx, renderState);
+        renderer.extractRenderState(mapId, mapData, RENDER_STATE);
+        MaptipPreviewRenderer.renderMap(guiGraphics, x, y, sizePx, RENDER_STATE);
     }
 }

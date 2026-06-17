@@ -18,7 +18,7 @@ public abstract class MaptipItemTooltipMixin {
     @Inject(method = "getTooltipImage", at = @At("HEAD"), cancellable = true)
     private void maptip$getTooltipImage(ItemStack stack, CallbackInfoReturnable<Optional<TooltipComponent>> callbackInfo) {
         if (stack.is(Items.FILLED_MAP) && stack.get(DataComponents.MAP_ID) != null) {
-            callbackInfo.setReturnValue(Optional.of(new MaptipTooltipData(stack.copy())));
+            callbackInfo.setReturnValue(Optional.of(new MaptipTooltipData(stack)));
             callbackInfo.cancel();
         }
     }

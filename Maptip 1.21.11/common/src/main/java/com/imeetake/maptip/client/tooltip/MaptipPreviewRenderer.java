@@ -93,6 +93,6 @@ public final class MaptipPreviewRenderer {
     }
 
     private static int getInnerSize(int sizePx) {
-        return Math.round(sizePx - FRAME_INSET_SRC * (sizePx / (float) FRAME_PIXELS) * 2f);
+        return sizePx - 2 * getFrameInset(sizePx);
     }
 }

@@ -1,0 +1,7 @@
+dependencies {
+    implementation(libs.balmFabric) {
+        changing = libs.versions.balm.get().contains("SNAPSHOT")
+    }
+    compileOnly libs.modMenu
+    runtimeOnly libs.modMenu
+}

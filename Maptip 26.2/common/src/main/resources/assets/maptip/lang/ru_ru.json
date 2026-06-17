@@ -1,0 +1,9 @@
+{
+  "modmenu.descriptionTranslation.maptip": "Быстрый просмотр карты в инвентаре.",
+  "maptip.configuration.client.title": "Maptip Настройки",
+  "maptip.configuration.preview.title": "Предпросмотр подсказки",
+  "maptip.configuration.previewSize": "Размер предпросмотра",
+  "maptip.configuration.previewSize.value": "Размер предпросмотра: %s пикс.",
+  "maptip.configuration.reset": "Сброс",
+  "maptip.configuration.previewSize.tooltip": "Размер предпросмотра карты в подсказках предметов, в пикселях."
+}

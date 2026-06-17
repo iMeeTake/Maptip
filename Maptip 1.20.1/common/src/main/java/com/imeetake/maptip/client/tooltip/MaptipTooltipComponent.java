@@ -46,7 +46,6 @@ public final class MaptipTooltipComponent implements ClientTooltipComponent {
 
         MapItemSavedData mapData = MapItem.getSavedData(mapId, client.level);
         if (mapData == null) {
-            MaptipPreviewRenderer.renderFallbackItem(guiGraphics, x, y, sizePx, stack);
             return;
         }
 

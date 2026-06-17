@@ -4,7 +4,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.MapRenderer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.maps.MapId;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
@@ -69,14 +68,6 @@ public final class MaptipPreviewRenderer {
         guiGraphics.pose().popPose();
     }
 
-    public static void renderFallbackItem(GuiGraphics guiGraphics, int x, int y, int sizePx, ItemStack stack) {
-        int offsetPx = getFrameInset(sizePx);
-        int innerPx = getInnerSize(sizePx);
-        int itemX = x + offsetPx + (innerPx - 16) / 2;
-        int itemY = y + offsetPx + (innerPx - 16) / 2;
-        guiGraphics.renderItem(stack, itemX, itemY);
-    }
-
     public static void renderSampleMap(GuiGraphics guiGraphics, int x, int y, int sizePx) {
         int offsetPx = getFrameInset(sizePx);
         int innerPx = getInnerSize(sizePx);
@@ -105,6 +96,6 @@ public final class MaptipPreviewRenderer {
     }
 
     private static int getInnerSize(int sizePx) {
-        return Math.round(sizePx - FRAME_INSET_SRC * (sizePx / (float) FRAME_PIXELS) * 2f);
+        return sizePx - 2 * getFrameInset(sizePx);
     }
 }

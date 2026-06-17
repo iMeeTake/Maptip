@@ -42,7 +42,7 @@ public class ForgeMaptipClient {
         List<Either<FormattedText, TooltipComponent>> elements = event.getTooltipElements();
         boolean alreadyAdded = elements.stream().anyMatch(element -> element.map(text -> false, component -> component instanceof MaptipTooltipData));
         if (!alreadyAdded) {
-            elements.add(Math.min(1, elements.size()), Either.right(new MaptipTooltipData(stack.copy())));
+            elements.add(Math.min(1, elements.size()), Either.right(new MaptipTooltipData(stack)));
         }
     }
 }

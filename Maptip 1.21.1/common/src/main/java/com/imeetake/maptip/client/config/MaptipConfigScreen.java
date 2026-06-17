@@ -54,7 +54,7 @@ public class MaptipConfigScreen extends Screen {
         this.controlsWidth = Math.min(CONTROL_WIDTH, Math.max(130, this.contentWidth / 2 - COLUMN_GAP / 2));
         this.controlsLeft = this.contentLeft;
         this.previewLeft = this.controlsLeft + this.controlsWidth + COLUMN_GAP;
-        this.previewWidth = this.contentLeft + this.contentWidth - this.previewLeft;
+        this.previewWidth = Math.max(0, this.contentLeft + this.contentWidth - this.previewLeft);
         this.panelHeight = Math.max(120, this.height - this.contentTop - 48);
 
         int buttonY = this.contentTop + this.panelHeight - 52;
