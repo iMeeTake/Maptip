@@ -13,7 +13,7 @@
     "issues": "${issues}"
   },
   "license": "${license}",
-  "icon": "${mod_id}-icon.png",
+  "icon": "icon.png",
   "environment": "client",
   "entrypoints": {
     "main": [

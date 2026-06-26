@@ -46,10 +46,14 @@ public final class MaptipPreviewRenderer {
     }
 
     public static void renderFrame(GuiGraphics guiGraphics, int x, int y, int sizePx) {
+        renderFrame(guiGraphics, x, y, sizePx, 500);
+    }
+
+    public static void renderFrame(GuiGraphics guiGraphics, int x, int y, int sizePx, int z) {
         float frameScale = sizePx / (float) FRAME_PIXELS;
 
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(x, y, 500);
+        guiGraphics.pose().translate(x, y, z);
         guiGraphics.pose().scale(frameScale, frameScale, 1f);
         guiGraphics.blit(MAP_FRAME, 0, 0, 0, 0, FRAME_PIXELS, FRAME_PIXELS, FRAME_PIXELS, FRAME_PIXELS);
         guiGraphics.pose().popPose();
@@ -68,7 +72,7 @@ public final class MaptipPreviewRenderer {
         guiGraphics.pose().popPose();
     }
 
-    public static void renderSampleMap(GuiGraphics guiGraphics, int x, int y, int sizePx) {
+    public static void renderSampleMap(GuiGraphics guiGraphics, int x, int y, int sizePx, int z) {
         int offsetPx = getFrameInset(sizePx);
         int innerPx = getInnerSize(sizePx);
         int innerX = x + offsetPx;
@@ -76,7 +80,7 @@ public final class MaptipPreviewRenderer {
         float innerScale = innerPx / (float) MAP_PIXELS;
 
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(innerX, innerY, 501);
+        guiGraphics.pose().translate(innerX, innerY, z);
         guiGraphics.pose().scale(innerScale, innerScale, 1f);
         for (int tileY = 0; tileY < SAMPLE_GRID_TILES; tileY++) {
             for (int tileX = 0; tileX < SAMPLE_GRID_TILES; tileX++) {

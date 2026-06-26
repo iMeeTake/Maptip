@@ -1,0 +1,9 @@
+{
+  "modmenu.descriptionTranslation.maptip": "在物品提示框中查看地图。",
+  "maptip.configuration.client.title": "Maptip 设置",
+  "maptip.configuration.preview.title": "提示框预览",
+  "maptip.configuration.previewSize": "预览大小",
+  "maptip.configuration.previewSize.value": "预览大小：%s 像素",
+  "maptip.configuration.reset": "重置",
+  "maptip.configuration.previewSize.tooltip": "物品提示框中地图预览的大小（以像素为单位）。"
+}

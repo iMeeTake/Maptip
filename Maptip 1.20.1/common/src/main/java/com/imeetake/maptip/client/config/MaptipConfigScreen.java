@@ -142,8 +142,8 @@ public class MaptipConfigScreen extends Screen {
         guiGraphics.fill(-tooltipWidth / 2 - 3, -tooltipHeight / 2 - 4, tooltipWidth / 2 + 3, tooltipHeight / 2 + 4, TOOLTIP_BACKGROUND);
         guiGraphics.renderOutline(-tooltipWidth / 2 - 3, -tooltipHeight / 2 - 4, tooltipWidth + 6, tooltipHeight + 8, TOOLTIP_BORDER);
         guiGraphics.drawString(this.font, mapName, -tooltipContentWidth / 2, -tooltipHeight / 2 + 4, TEXT_COLOR);
-        MaptipPreviewRenderer.renderFrame(guiGraphics, -tooltipContentWidth / 2, mapY, this.previewSize);
-        MaptipPreviewRenderer.renderSampleMap(guiGraphics, -tooltipContentWidth / 2, mapY, this.previewSize);
+        MaptipPreviewRenderer.renderFrame(guiGraphics, -tooltipContentWidth / 2, mapY, this.previewSize, 1);
+        MaptipPreviewRenderer.renderSampleMap(guiGraphics, -tooltipContentWidth / 2, mapY, this.previewSize, 2);
         guiGraphics.drawString(this.font, mapId, -tooltipContentWidth / 2, mapY + this.previewSize + 6, ID_TEXT_COLOR, true);
         guiGraphics.pose().popPose();
     }

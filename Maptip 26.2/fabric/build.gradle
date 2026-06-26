@@ -62,7 +62,6 @@ tasks.register('curseforge', TaskPublishCurseForge) {
     }
     if (projectId) {
         def mainFile = upload(findProperty("curseforge_project_id"), jar.archiveFile.get().asFile)
-        mainFile.changelog = rootProject.file('CHANGELOG.md').text
         mainFile.addRequirement("fabric-api")
         mainFile.addRequirement("balm")
         mainFile.addGameVersion(libs.minecraft.get().version)
@@ -77,7 +76,6 @@ modrinth {
     versionType = "release"
     versionNumber = project.version + "+fabric-" + libs.minecraft.get().version
     uploadFile = jar
-    changelog = rootProject.file("CHANGELOG.md").text
     gameVersions = [libs.minecraft.get().version]
     loaders = ['fabric']
     dependencies {

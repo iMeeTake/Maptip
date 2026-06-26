@@ -6,7 +6,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_id}-neoforge-${minecraft_version}"
+    archivesName = "${mod_id}-neoforge"
 }
 
 neoForge {
@@ -56,7 +56,6 @@ task curseforge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
     apiToken = project.findProperty("curseforge.api_key") ?: System.getenv("CURSEFORGE_TOKEN") ?: "none"
 
     def mainFile = upload(curseforge_project_id, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
-    mainFile.changelog = rootProject.file('CHANGELOG.md').text
     mainFile.addRequirement("balm")
     project.minecraft_versions.split(',').toList().each { mainFile.addGameVersion(it) }
     mainFile.releaseType = "release"
@@ -69,9 +68,7 @@ modrinth {
     versionType = project.modrinth_release_type
     versionNumber = project.version + "+neoforge-" + project.minecraft_version
     uploadFile = jar
-    changelog = rootProject.file("CHANGELOG.md").text
     gameVersions = project.minecraft_versions.split(',').toList()
-    syncBodyFrom = rootProject.file("modpage.md").text
     loaders = ['neoforge']
     dependencies {
         required.project "balm"
