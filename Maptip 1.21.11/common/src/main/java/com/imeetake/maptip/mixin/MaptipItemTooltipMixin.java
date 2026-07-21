@@ -1,5 +1,6 @@
 package com.imeetake.maptip.mixin;
 
+import com.imeetake.maptip.client.MaptipClient;
 import com.imeetake.maptip.tooltip.MaptipTooltipData;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
@@ -17,7 +18,7 @@ import java.util.Optional;
 public abstract class MaptipItemTooltipMixin {
     @Inject(method = "getTooltipImage", at = @At("HEAD"), cancellable = true)
     private void maptip$getTooltipImage(ItemStack stack, CallbackInfoReturnable<Optional<TooltipComponent>> callbackInfo) {
-        if (stack.is(Items.FILLED_MAP) && stack.get(DataComponents.MAP_ID) != null) {
+        if (stack.is(Items.FILLED_MAP) && stack.get(DataComponents.MAP_ID) != null && MaptipClient.shouldShowPreview()) {
             callbackInfo.setReturnValue(Optional.of(new MaptipTooltipData(stack)));
             callbackInfo.cancel();
         }

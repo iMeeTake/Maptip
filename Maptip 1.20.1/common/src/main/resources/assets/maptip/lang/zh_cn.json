@@ -5,5 +5,7 @@
   "maptip.configuration.previewSize": "预览大小",
   "maptip.configuration.previewSize.value": "预览大小：%s 像素",
   "maptip.configuration.reset": "重置",
-  "maptip.configuration.previewSize.tooltip": "物品提示框中地图预览的大小（以像素为单位）。"
+  "maptip.configuration.previewSize.tooltip": "物品提示框中地图预览的大小（以像素为单位）。",
+  "maptip.configuration.requireShift": "仅按住 Shift 时",
+  "maptip.configuration.requireShift.tooltip": "仅在按住 Shift 键时显示地图预览。"
 }

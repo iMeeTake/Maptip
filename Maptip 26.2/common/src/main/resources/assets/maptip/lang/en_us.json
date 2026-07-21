@@ -5,5 +5,7 @@
   "maptip.configuration.previewSize": "Preview Size",
   "maptip.configuration.previewSize.value": "Preview Size: %s px",
   "maptip.configuration.reset": "Reset",
-  "maptip.configuration.previewSize.tooltip": "Size of the map preview in item tooltips, in pixels."
+  "maptip.configuration.previewSize.tooltip": "Size of the map preview in item tooltips, in pixels.",
+  "maptip.configuration.requireShift": "Only with Shift",
+  "maptip.configuration.requireShift.tooltip": "Show the map preview only while holding Shift."
 }

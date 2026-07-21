@@ -9,6 +9,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -33,6 +34,7 @@ public class MaptipConfigScreen extends Screen {
 
     private final Screen parent;
     private int previewSize;
+    private boolean requireShift;
     private PreviewSizeSlider previewSizeSlider;
     private int contentLeft;
     private int contentTop;
@@ -47,6 +49,7 @@ public class MaptipConfigScreen extends Screen {
         super(TITLE);
         this.parent = parent;
         this.previewSize = MaptipConfig.getPreviewSize();
+        this.requireShift = MaptipConfig.getRequireShift();
     }
 
     @Override
@@ -58,7 +61,8 @@ public class MaptipConfigScreen extends Screen {
         this.controlsLeft = this.contentLeft;
         this.previewLeft = this.controlsLeft + this.controlsWidth + COLUMN_GAP;
         this.previewWidth = Math.max(0, this.contentLeft + this.contentWidth - this.previewLeft);
-        this.panelHeight = Math.max(120, this.height - this.contentTop - 48);
+        this.panelHeight = Math.max(162, this.height - this.contentTop - 48);
+        this.contentTop = Math.min(this.contentTop, Math.max(20, this.height - this.panelHeight - 10));
 
         int buttonY = this.contentTop + this.panelHeight - 52;
         int buttonGap = 8;
@@ -77,11 +81,18 @@ public class MaptipConfigScreen extends Screen {
         ));
         this.previewSizeSlider.setTooltip(Tooltip.create(Component.translatable("maptip.configuration.previewSize.tooltip")));
 
+        this.addRenderableWidget(Checkbox.builder(Component.translatable("maptip.configuration.requireShift"), this.font)
+            .pos(this.controlsLeft + PANEL_PADDING, this.contentTop + 72)
+            .maxWidth(this.controlsWidth - PANEL_PADDING * 2)
+            .selected(this.requireShift)
+            .onValueChange((checkbox, value) -> this.requireShift = value)
+            .tooltip(Tooltip.create(Component.translatable("maptip.configuration.requireShift.tooltip")))
+            .build());
+
         this.addRenderableWidget(Button.builder(RESET, button -> {
             this.previewSize = MaptipConfig.DEFAULT_PREVIEW_SIZE;
-            if (this.previewSizeSlider != null) {
-                this.previewSizeSlider.setPreviewSize(this.previewSize);
-            }
+            this.requireShift = MaptipConfig.DEFAULT_REQUIRE_SHIFT;
+            this.rebuildWidgets();
         }).bounds(this.controlsLeft + PANEL_PADDING, buttonY, this.controlsWidth - PANEL_PADDING * 2, 20).build());
 
         this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, button -> this.minecraft.setScreen(this.parent))
@@ -90,7 +101,11 @@ public class MaptipConfigScreen extends Screen {
 
         this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> {
             int savedPreviewSize = this.previewSize;
-            Balm.config().updateLocalConfig(MaptipConfig.class, config -> config.previewSize = savedPreviewSize);
+            boolean savedRequireShift = this.requireShift;
+            Balm.config().updateLocalConfig(MaptipConfig.class, config -> {
+                config.previewSize = savedPreviewSize;
+                config.requireShift = savedRequireShift;
+            });
             this.minecraft.setScreen(this.parent);
         }).bounds(doneButtonX, buttonY + 28, doneButtonWidth, 20).build());
     }
@@ -216,13 +231,6 @@ public class MaptipConfigScreen extends Screen {
             this.previewSize = clamp(previewSize);
             this.onChange = onChange;
             this.updateMessage();
-        }
-
-        private void setPreviewSize(int previewSize) {
-            this.previewSize = clamp(previewSize);
-            this.value = normalize(this.previewSize);
-            this.updateMessage();
-            this.onChange.accept(this.previewSize);
         }
 
         @Override

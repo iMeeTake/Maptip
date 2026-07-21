@@ -5,5 +5,7 @@
   "maptip.configuration.previewSize": "Taille de l'aperçu",
   "maptip.configuration.previewSize.value": "Taille de l'aperçu : %s px",
   "maptip.configuration.reset": "Réinitialiser",
-  "maptip.configuration.previewSize.tooltip": "Taille de l'aperçu de la carte dans les infobulles d'objet, en pixels."
+  "maptip.configuration.previewSize.tooltip": "Taille de l'aperçu de la carte dans les infobulles d'objet, en pixels.",
+  "maptip.configuration.requireShift": "Uniquement avec Maj",
+  "maptip.configuration.requireShift.tooltip": "Afficher l'aperçu de la carte uniquement en maintenant Maj."
 }

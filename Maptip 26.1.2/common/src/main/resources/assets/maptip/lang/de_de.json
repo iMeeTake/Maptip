@@ -5,5 +5,7 @@
   "maptip.configuration.previewSize": "Vorschaugröße",
   "maptip.configuration.previewSize.value": "Vorschaugröße: %s px",
   "maptip.configuration.reset": "Zurücksetzen",
-  "maptip.configuration.previewSize.tooltip": "Größe der Kartenvorschau in Gegenstands-Tooltips, in Pixeln."
+  "maptip.configuration.previewSize.tooltip": "Größe der Kartenvorschau in Gegenstands-Tooltips, in Pixeln.",
+  "maptip.configuration.requireShift": "Nur mit Umschalt",
+  "maptip.configuration.requireShift.tooltip": "Kartenvorschau nur bei gedrückter Umschalttaste anzeigen."
 }

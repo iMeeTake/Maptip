@@ -5,5 +5,7 @@
   "maptip.configuration.previewSize": "Размер предпросмотра",
   "maptip.configuration.previewSize.value": "Размер предпросмотра: %s пикс.",
   "maptip.configuration.reset": "Сброс",
-  "maptip.configuration.previewSize.tooltip": "Размер предпросмотра карты в подсказках предметов, в пикселях."
+  "maptip.configuration.previewSize.tooltip": "Размер предпросмотра карты в подсказках предметов, в пикселях.",
+  "maptip.configuration.requireShift": "Только с Shift",
+  "maptip.configuration.requireShift.tooltip": "Показывать предпросмотр карты только при зажатом Shift."
 }

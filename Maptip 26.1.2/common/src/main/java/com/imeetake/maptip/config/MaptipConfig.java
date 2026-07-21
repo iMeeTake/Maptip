@@ -11,10 +11,14 @@ public class MaptipConfig {
     public static final int DEFAULT_PREVIEW_SIZE = 80;
     public static final int MIN_PREVIEW_SIZE = 48;
     public static final int MAX_PREVIEW_SIZE = 144;
+    public static final boolean DEFAULT_REQUIRE_SHIFT = false;
 
     @Comment("Size of the map preview in item tooltips, in pixels.")
     @Range(min = "48", max = "144")
     public int previewSize = DEFAULT_PREVIEW_SIZE;
+
+    @Comment("Only show the map preview while holding Shift.")
+    public boolean requireShift = DEFAULT_REQUIRE_SHIFT;
 
     public static int getPreviewSize() {
         MaptipConfig config = Balm.config().getActiveConfig(MaptipConfig.class);
@@ -23,5 +27,14 @@ public class MaptipConfig {
         }
 
         return Math.clamp(config.previewSize, MIN_PREVIEW_SIZE, MAX_PREVIEW_SIZE);
+    }
+
+    public static boolean getRequireShift() {
+        MaptipConfig config = Balm.config().getActiveConfig(MaptipConfig.class);
+        if (config == null) {
+            return DEFAULT_REQUIRE_SHIFT;
+        }
+
+        return config.requireShift;
     }
 }
