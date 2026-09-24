@@ -9,7 +9,7 @@ neoForge = "26.2.0.0-beta"
 # See https://fabricmc.net/develop/
 fabricApi = "0.152.1+26.2"
 fabricLoader = "0.19.3"
-modMenu = "18.0.0-alpha.8"
+modMenu = "20.0.2"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
