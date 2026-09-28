@@ -7,5 +7,7 @@
   "maptip.configuration.reset": "Réinitialiser",
   "maptip.configuration.previewSize.tooltip": "Taille de l'aperçu de la carte dans les infobulles d'objet, en pixels.",
   "maptip.configuration.requireShift": "Uniquement avec Maj",
-  "maptip.configuration.requireShift.tooltip": "Afficher l'aperçu de la carte uniquement en maintenant Maj."
+  "maptip.configuration.requireShift.tooltip": "Afficher l'aperçu de la carte uniquement en maintenant Maj.",
+  "maptip.tooltip.notLoaded": "Prenez la carte dans votre inventaire pour charger l'aperçu",
+  "maptip.tooltip.notExplored": "Prenez la carte en main pour la dessiner"
 }

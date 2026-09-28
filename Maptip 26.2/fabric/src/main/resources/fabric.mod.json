@@ -3,7 +3,7 @@
   "id": "${mod_id}",
   "version": "${version}",
   "name": "${mod_name}",
-  "description": "modmenu.descriptionTranslation.${mod_id}",
+  "description": "${description}",
   "authors": [
     "${mod_author}"
   ],

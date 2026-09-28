@@ -7,5 +7,7 @@
   "maptip.configuration.reset": "Zurücksetzen",
   "maptip.configuration.previewSize.tooltip": "Größe der Kartenvorschau in Gegenstands-Tooltips, in Pixeln.",
   "maptip.configuration.requireShift": "Nur mit Umschalt",
-  "maptip.configuration.requireShift.tooltip": "Kartenvorschau nur bei gedrückter Umschalttaste anzeigen."
+  "maptip.configuration.requireShift.tooltip": "Kartenvorschau nur bei gedrückter Umschalttaste anzeigen.",
+  "maptip.tooltip.notLoaded": "Nehmen Sie die Karte ins Inventar, um die Vorschau zu laden",
+  "maptip.tooltip.notExplored": "Nehmen Sie die Karte in die Hand, um sie zu zeichnen"
 }

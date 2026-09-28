@@ -4,6 +4,7 @@ import com.imeetake.maptip.Maptip;
 import com.imeetake.maptip.client.MaptipClient;
 import com.imeetake.maptip.client.config.MaptipConfigScreen;
 import com.imeetake.maptip.tooltip.MaptipTooltipData;
+import net.blay09.mods.balm.Balm;
 import net.blay09.mods.balm.client.BalmClient;
 import net.blay09.mods.balm.neoforge.platform.runtime.NeoForgeLoadContext;
 import net.neoforged.api.distmarker.Dist;
@@ -17,6 +18,7 @@ import net.neoforged.fml.common.Mod;
 public class NeoForgeMaptipClient {
     public NeoForgeMaptipClient(ModContainer modContainer, IEventBus modEventBus) {
         final var context = new NeoForgeLoadContext(modContainer, modEventBus);
+        Balm.initializeMod(Maptip.MOD_ID, context, Maptip::initialize);
         BalmClient.initializeMod(Maptip.MOD_ID, context, MaptipClient::initialize);
         IConfigScreenFactory configScreenFactory = (container, parent) -> new MaptipConfigScreen(parent);
         modContainer.registerExtensionPoint(IConfigScreenFactory.class, configScreenFactory);

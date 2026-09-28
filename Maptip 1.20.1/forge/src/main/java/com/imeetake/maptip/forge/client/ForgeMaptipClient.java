@@ -5,6 +5,7 @@ import com.imeetake.maptip.Maptip;
 import com.imeetake.maptip.client.MaptipClient;
 import com.imeetake.maptip.client.config.MaptipConfigScreen;
 import com.imeetake.maptip.tooltip.MaptipTooltipData;
+import net.blay09.mods.balm.api.Balm;
 import net.blay09.mods.balm.api.EmptyLoadContext;
 import net.blay09.mods.balm.api.client.BalmClient;
 import net.minecraftforge.client.ConfigScreenHandler;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class ForgeMaptipClient {
     public static void initialize(FMLJavaModLoadingContext context) {
+        Balm.initializeMod(Maptip.MOD_ID, EmptyLoadContext.INSTANCE, Maptip::initialize);
         BalmClient.initializeMod(Maptip.MOD_ID, EmptyLoadContext.INSTANCE, MaptipClient::initialize);
         context.getContainer().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
             () -> new ConfigScreenHandler.ConfigScreenFactory(MaptipConfigScreen::new));
@@ -35,7 +37,7 @@ public class ForgeMaptipClient {
 
     private static void gatherTooltipComponents(RenderTooltipEvent.GatherComponents event) {
         ItemStack stack = event.getItemStack();
-        if (!stack.is(Items.FILLED_MAP) || MapItem.getMapId(stack) == null) {
+        if (!stack.is(Items.FILLED_MAP) || MapItem.getMapId(stack) == null || !MaptipClient.shouldShowPreview()) {
             return;
         }
 

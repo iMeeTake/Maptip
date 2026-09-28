@@ -7,5 +7,7 @@
   "maptip.configuration.reset": "Reset",
   "maptip.configuration.previewSize.tooltip": "Size of the map preview in item tooltips, in pixels.",
   "maptip.configuration.requireShift": "Only with Shift",
-  "maptip.configuration.requireShift.tooltip": "Show the map preview only while holding Shift."
+  "maptip.configuration.requireShift.tooltip": "Show the map preview only while holding Shift.",
+  "maptip.tooltip.notLoaded": "Pick up this map to load its preview",
+  "maptip.tooltip.notExplored": "Hold this map to start drawing it"
 }

@@ -28,6 +28,7 @@ loom {
             setConfigName("fabric Client")
             ideConfigGenerated(true)
             runDir("runs/client")
+            vmArg "-XX:StackShadowPages=32"
         }
         server {
             server()

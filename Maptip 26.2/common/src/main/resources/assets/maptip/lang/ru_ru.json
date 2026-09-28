@@ -7,5 +7,7 @@
   "maptip.configuration.reset": "Сброс",
   "maptip.configuration.previewSize.tooltip": "Размер предпросмотра карты в подсказках предметов, в пикселях.",
   "maptip.configuration.requireShift": "Только с Shift",
-  "maptip.configuration.requireShift.tooltip": "Показывать предпросмотр карты только при зажатом Shift."
+  "maptip.configuration.requireShift.tooltip": "Показывать предпросмотр карты только при зажатом Shift.",
+  "maptip.tooltip.notLoaded": "Возьмите карту в инвентарь, чтобы загрузить предпросмотр",
+  "maptip.tooltip.notExplored": "Возьмите карту в руку, чтобы нарисовать её"
 }

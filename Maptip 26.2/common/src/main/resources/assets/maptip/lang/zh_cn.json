@@ -7,5 +7,7 @@
   "maptip.configuration.reset": "重置",
   "maptip.configuration.previewSize.tooltip": "物品提示框中地图预览的大小（以像素为单位）。",
   "maptip.configuration.requireShift": "仅按住 Shift 时",
-  "maptip.configuration.requireShift.tooltip": "仅在按住 Shift 键时显示地图预览。"
+  "maptip.configuration.requireShift.tooltip": "仅在按住 Shift 键时显示地图预览。",
+  "maptip.tooltip.notLoaded": "将地图放入物品栏以加载预览",
+  "maptip.tooltip.notExplored": "手持此地图以开始绘制"
 }
