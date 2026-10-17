@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.maptip": "ツールチップで地図をプレビュー表示します。",
+  "maptip.configuration.client.title": "Maptip 設定",
+  "maptip.configuration.preview.title": "ツールチップのプレビュー",
+  "maptip.configuration.previewSize": "プレビューサイズ",
+  "maptip.configuration.previewSize.value": "プレビューサイズ: %s px",
+  "maptip.configuration.reset": "リセット",
+  "maptip.configuration.previewSize.tooltip": "アイテムのツールチップに表示される地図プレビューのサイズ（ピクセル単位）。",
+  "maptip.configuration.requireShift": "Shift押下時のみ",
+  "maptip.configuration.requireShift.tooltip": "Shiftキーを押している間のみ地図のプレビューを表示します。",
+  "maptip.tooltip.notLoaded": "プレビューを読み込むには地図をインベントリに入れてください",
+  "maptip.tooltip.notExplored": "地図を描き始めるには手に持ってください"
+}

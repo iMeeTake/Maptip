@@ -16,9 +16,6 @@
   "icon": "icon.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "${group}.${mod_id}.fabric.Fabric${mod_main}"
-    ],
     "client": [
       "${group}.${mod_id}.fabric.client.Fabric${mod_main}Client"
     ],

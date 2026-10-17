@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.maptip": "Podgląd map w podpowiedziach przedmiotów.",
+  "maptip.configuration.client.title": "Ustawienia Maptip",
+  "maptip.configuration.preview.title": "Podgląd podpowiedzi",
+  "maptip.configuration.previewSize": "Rozmiar podglądu",
+  "maptip.configuration.previewSize.value": "Rozmiar podglądu: %s px",
+  "maptip.configuration.reset": "Resetuj",
+  "maptip.configuration.previewSize.tooltip": "Rozmiar podglądu mapy w podpowiedziach przedmiotów, w pikselach.",
+  "maptip.configuration.requireShift": "Tylko z Shift",
+  "maptip.configuration.requireShift.tooltip": "Pokazuj podgląd mapy tylko podczas przytrzymywania klawisza Shift.",
+  "maptip.tooltip.notLoaded": "Weź tę mapę do ekwipunku, aby wczytać jej podgląd",
+  "maptip.tooltip.notExplored": "Weź tę mapę do ręki, aby zacząć ją rysować"
+}

@@ -1,6 +1,8 @@
 package com.imeetake.maptip.client.tooltip;
 
 import com.imeetake.maptip.config.MaptipConfig;
+import java.util.Map;
+import java.util.WeakHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -20,6 +22,7 @@ public final class MaptipTooltipComponent implements ClientTooltipComponent {
     private static final int HINT_COLOR = 0xFFAAAAAA;
     private static final Component NOT_LOADED = Component.translatable("maptip.tooltip.notLoaded");
     private static final Component NOT_EXPLORED = Component.translatable("maptip.tooltip.notExplored");
+    private static final Map<MapItemSavedData, BlankState> BLANK_CACHE = new WeakHashMap<>();
 
     private final ItemStack stack;
     private final MapItemSavedData mapData;
@@ -92,13 +95,38 @@ public final class MaptipTooltipComponent implements ClientTooltipComponent {
         return null;
     }
 
-    private static boolean isBlank(MapItemSavedData mapData) {
-        for (byte color : mapData.colors) {
-            if (color != 0) {
+    public static boolean isBlank(MapItemSavedData mapData) {
+        Minecraft client = Minecraft.getInstance();
+        long gameTime = client.level != null ? client.level.getGameTime() : Long.MIN_VALUE;
+        BlankState state = BLANK_CACHE.get(mapData);
+        if (state != null) {
+            if (state.nonZeroIndex >= 0 && state.nonZeroIndex < mapData.colors.length && mapData.colors[state.nonZeroIndex] != 0) {
+                return false;
+            }
+            if (state.nonZeroIndex == -1 && gameTime != Long.MIN_VALUE && gameTime == state.blankGameTime) {
+                return true;
+            }
+        } else {
+            state = new BlankState();
+            BLANK_CACHE.put(mapData, state);
+        }
+
+        byte[] colors = mapData.colors;
+        for (int i = 0; i < colors.length; i++) {
+            if (colors[i] != 0) {
+                state.nonZeroIndex = i;
+                state.blankGameTime = Long.MIN_VALUE;
                 return false;
             }
         }
 
+        state.nonZeroIndex = -1;
+        state.blankGameTime = gameTime;
         return true;
+    }
+
+    private static final class BlankState {
+        private int nonZeroIndex = -1;
+        private long blankGameTime = Long.MIN_VALUE;
     }
 }

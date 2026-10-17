@@ -16,7 +16,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MapItem;
 
 import java.util.List;
@@ -37,7 +36,7 @@ public class ForgeMaptipClient {
 
     private static void gatherTooltipComponents(RenderTooltipEvent.GatherComponents event) {
         ItemStack stack = event.getItemStack();
-        if (!stack.is(Items.FILLED_MAP) || MapItem.getMapId(stack) == null || !MaptipClient.shouldShowPreview()) {
+        if (!(stack.getItem() instanceof MapItem) || MapItem.getMapId(stack) == null || !MaptipClient.shouldShowPreview()) {
             return;
         }
 

@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.maptip": "Veja mapas nas dicas de itens.",
+  "maptip.configuration.client.title": "Configurações do Maptip",
+  "maptip.configuration.preview.title": "Prévia da dica",
+  "maptip.configuration.previewSize": "Tamanho da prévia",
+  "maptip.configuration.previewSize.value": "Tamanho da prévia: %s px",
+  "maptip.configuration.reset": "Redefinir",
+  "maptip.configuration.previewSize.tooltip": "Tamanho da prévia do mapa nas dicas de itens, em pixels.",
+  "maptip.configuration.requireShift": "Apenas com Shift",
+  "maptip.configuration.requireShift.tooltip": "Mostrar a prévia do mapa apenas enquanto segura Shift.",
+  "maptip.tooltip.notLoaded": "Pegue este mapa no inventário para carregar a prévia",
+  "maptip.tooltip.notExplored": "Segure este mapa na mão para começar a desenhá-lo"
+}

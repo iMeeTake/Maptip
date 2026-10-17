@@ -59,12 +59,16 @@ public final class MaptipPreviewRenderer {
     }
 
     public static void renderMap(GuiGraphics guiGraphics, int x, int y, int sizePx, MapRenderer renderer, int mapId, MapItemSavedData mapData) {
+        renderMap(guiGraphics, x, y, sizePx, 501, renderer, mapId, mapData);
+    }
+
+    public static void renderMap(GuiGraphics guiGraphics, int x, int y, int sizePx, int z, MapRenderer renderer, int mapId, MapItemSavedData mapData) {
         int offsetPx = getFrameInset(sizePx);
         int innerPx = getInnerSize(sizePx);
         float innerScale = innerPx / (float) MAP_PIXELS;
 
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(x + offsetPx, y + offsetPx, 501);
+        guiGraphics.pose().translate(x + offsetPx, y + offsetPx, z);
         guiGraphics.pose().scale(innerScale, innerScale, 1f);
         renderer.render(guiGraphics.pose(), guiGraphics.bufferSource(), mapId, mapData, true, LightTexture.FULL_BRIGHT);
         guiGraphics.flush();

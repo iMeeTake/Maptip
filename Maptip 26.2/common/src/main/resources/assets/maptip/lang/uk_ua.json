@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.maptip": "Швидкий перегляд карти в підказках предметів.",
+  "maptip.configuration.client.title": "Налаштування Maptip",
+  "maptip.configuration.preview.title": "Попередній перегляд підказки",
+  "maptip.configuration.previewSize": "Розмір перегляду",
+  "maptip.configuration.previewSize.value": "Розмір перегляду: %s пікс.",
+  "maptip.configuration.reset": "Скинути",
+  "maptip.configuration.previewSize.tooltip": "Розмір попереднього перегляду карти в підказках предметів, у пікселях.",
+  "maptip.configuration.requireShift": "Лише з Shift",
+  "maptip.configuration.requireShift.tooltip": "Показувати попередній перегляд карти лише при затиснутому Shift.",
+  "maptip.tooltip.notLoaded": "Візьміть карту в інвентар, щоб завантажити попередній перегляд",
+  "maptip.tooltip.notExplored": "Візьміть карту в руку, щоб почати малювати її"
+}

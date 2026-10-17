@@ -1,10 +1,12 @@
 package com.imeetake.maptip.client.config;
 
 import com.imeetake.maptip.client.tooltip.MaptipPreviewRenderer;
+import com.imeetake.maptip.client.tooltip.MaptipTooltipComponent;
 import com.imeetake.maptip.config.MaptipConfig;
 import java.util.List;
 import java.util.function.IntConsumer;
 import net.blay09.mods.balm.Balm;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractSliderButton;
@@ -14,15 +16,26 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.MapRenderer;
+import net.minecraft.client.renderer.state.MapRenderState;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.MapItem;
+import net.minecraft.world.level.saveddata.maps.MapId;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import org.joml.Vector2i;
 
 public class MaptipConfigScreen extends Screen {
     private static final Component TITLE = Component.translatable("maptip.configuration.client.title");
     private static final Component PREVIEW_TITLE = Component.translatable("maptip.configuration.preview.title");
     private static final Component RESET = Component.translatable("maptip.configuration.reset");
+    private static final Component DEFAULT_MAP_NAME = Component.translatable("item.minecraft.filled_map");
+    private static final Component DEFAULT_MAP_ID = Component.translatable("filled_map.id", 0);
     private static final int TEXT_COLOR = 0xFFFFFFFF;
     private static final int ID_TEXT_COLOR = 0xFFA0A0A0;
     private static final int PANEL_COLOR = 0x78101010;
@@ -35,6 +48,7 @@ public class MaptipConfigScreen extends Screen {
     private final Screen parent;
     private int previewSize;
     private boolean requireShift;
+    private PreviewMap previewMap;
     private PreviewSizeSlider previewSizeSlider;
     private int contentLeft;
     private int contentTop;
@@ -54,6 +68,7 @@ public class MaptipConfigScreen extends Screen {
 
     @Override
     protected void init() {
+        this.previewMap = this.findPreviewMap();
         this.contentWidth = Math.min(MAX_CONTENT_WIDTH, Math.max(1, this.width - 40));
         this.contentLeft = this.width / 2 - this.contentWidth / 2;
         this.contentTop = Math.max(42, Math.min(64, this.height / 8 + 20));
@@ -130,8 +145,9 @@ public class MaptipConfigScreen extends Screen {
     }
 
     private void renderPreview(GuiGraphics guiGraphics) {
-        Component mapName = Component.translatable("item.minecraft.filled_map");
-        Component mapId = Component.translatable("filled_map.id", 0);
+        PreviewMap previewMap = this.previewMap;
+        Component mapName = previewMap != null ? previewMap.name() : DEFAULT_MAP_NAME;
+        Component mapId = previewMap != null ? previewMap.idText() : DEFAULT_MAP_ID;
         int sampleTextWidth = Math.max(this.font.width(mapName), this.font.width(mapId));
         int tooltipContentWidth = Math.max(this.previewSize, sampleTextWidth);
         int tooltipContentHeight = 26 + this.previewSize;
@@ -151,7 +167,7 @@ public class MaptipConfigScreen extends Screen {
         int tooltipY = this.contentTop + this.panelHeight / 2 + 6;
         List<ClientTooltipComponent> tooltipLines = List.of(
             ClientTooltipComponent.create(mapName.getVisualOrderText()),
-            new SampleMapTooltipComponent(this.previewSize),
+            new SampleMapTooltipComponent(this.previewSize, previewMap),
             new GrayTextTooltipComponent(mapId)
         );
 
@@ -169,17 +185,68 @@ public class MaptipConfigScreen extends Screen {
         guiGraphics.pose().popMatrix();
     }
 
+    private PreviewMap findPreviewMap() {
+        if (this.minecraft == null || this.minecraft.player == null || this.minecraft.level == null) {
+            return null;
+        }
+
+        ClientLevel level = this.minecraft.level;
+        PreviewMap mainHand = resolvePreviewMap(this.minecraft.player.getMainHandItem(), level);
+        if (mainHand != null) {
+            return mainHand;
+        }
+
+        PreviewMap offHand = resolvePreviewMap(this.minecraft.player.getOffhandItem(), level);
+        if (offHand != null) {
+            return offHand;
+        }
+
+        Inventory inventory = this.minecraft.player.getInventory();
+        for (int i = 0; i < inventory.getContainerSize(); i++) {
+            PreviewMap candidate = resolvePreviewMap(inventory.getItem(i), level);
+            if (candidate != null) {
+                return candidate;
+            }
+        }
+
+        return null;
+    }
+
+    private static PreviewMap resolvePreviewMap(ItemStack stack, ClientLevel level) {
+        if (!(stack.getItem() instanceof MapItem)) {
+            return null;
+        }
+
+        MapId mapId = stack.get(DataComponents.MAP_ID);
+        if (mapId == null) {
+            return null;
+        }
+
+        MapItemSavedData mapData = MapItem.getSavedData(mapId, level);
+        if (mapData == null || (!mapData.locked && MaptipTooltipComponent.isBlank(mapData))) {
+            return null;
+        }
+
+        return new PreviewMap(stack.getHoverName(), Component.translatable("filled_map.id", mapId.id()), mapId, mapData);
+    }
+
     private static ClientTooltipPositioner centeredTooltipPositioner() {
         return (screenWidth, screenHeight, x, y, tooltipWidth, tooltipHeight) -> new Vector2i(x - tooltipWidth / 2, y - tooltipHeight / 2);
     }
 
+    private record PreviewMap(Component name, Component idText, MapId mapId, MapItemSavedData mapData) {
+    }
+
     private static final class SampleMapTooltipComponent implements ClientTooltipComponent {
         private static final int BOTTOM_PADDING = 6;
+        private static final MapRenderState RENDER_STATE = new MapRenderState();
 
         private final int sizePx;
+        private final PreviewMap previewMap;
 
-        private SampleMapTooltipComponent(int sizePx) {
+        private SampleMapTooltipComponent(int sizePx, PreviewMap previewMap) {
             this.sizePx = sizePx;
+            this.previewMap = previewMap;
         }
 
         @Override
@@ -195,7 +262,13 @@ public class MaptipConfigScreen extends Screen {
         @Override
         public void renderImage(Font font, int x, int y, int width, int height, GuiGraphics guiGraphics) {
             MaptipPreviewRenderer.renderFrame(guiGraphics, x, y, this.sizePx);
-            MaptipPreviewRenderer.renderSampleMap(guiGraphics, x, y, this.sizePx);
+            if (this.previewMap != null) {
+                MapRenderer renderer = Minecraft.getInstance().getMapRenderer();
+                renderer.extractRenderState(this.previewMap.mapId(), this.previewMap.mapData(), RENDER_STATE);
+                MaptipPreviewRenderer.renderMap(guiGraphics, x, y, this.sizePx, RENDER_STATE);
+            } else {
+                MaptipPreviewRenderer.renderSampleMap(guiGraphics, x, y, this.sizePx);
+            }
         }
     }
 

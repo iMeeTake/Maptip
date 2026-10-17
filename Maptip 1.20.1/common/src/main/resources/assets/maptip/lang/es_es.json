@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.maptip": "Muestra los mapas en las descripciones emergentes.",
+  "maptip.configuration.client.title": "Ajustes de Maptip",
+  "maptip.configuration.preview.title": "Vista previa en la descripción",
+  "maptip.configuration.previewSize": "Tamaño de vista previa",
+  "maptip.configuration.previewSize.value": "Tamaño de vista previa: %s px",
+  "maptip.configuration.reset": "Restablecer",
+  "maptip.configuration.previewSize.tooltip": "Tamaño de la vista previa del mapa en las descripciones de objetos, en píxeles.",
+  "maptip.configuration.requireShift": "Solo con Shift",
+  "maptip.configuration.requireShift.tooltip": "Mostrar la vista previa del mapa solo al mantener pulsado Shift.",
+  "maptip.tooltip.notLoaded": "Toma este mapa en tu inventario para cargar su vista previa",
+  "maptip.tooltip.notExplored": "Sostén este mapa en la mano para empezar a dibujarlo"
+}

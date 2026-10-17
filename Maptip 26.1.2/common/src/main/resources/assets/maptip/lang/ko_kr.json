@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.maptip": "아이템 툴팁에서 지도를 미리 봅니다.",
+  "maptip.configuration.client.title": "Maptip 설정",
+  "maptip.configuration.preview.title": "툴팁 미리보기",
+  "maptip.configuration.previewSize": "미리보기 크기",
+  "maptip.configuration.previewSize.value": "미리보기 크기: %s px",
+  "maptip.configuration.reset": "초기화",
+  "maptip.configuration.previewSize.tooltip": "아이템 툴팁에 표시되는 지도 미리보기의 크기(픽셀 단위)입니다.",
+  "maptip.configuration.requireShift": "Shift 키를 누를 때만",
+  "maptip.configuration.requireShift.tooltip": "Shift 키를 누르고 있을 때만 지도 미리보기를 표시합니다.",
+  "maptip.tooltip.notLoaded": "미리보기를 불러오려면 지도를 인벤토리로 가져오세요",
+  "maptip.tooltip.notExplored": "지도를 그리기 시작하려면 손에 드세요"
+}
